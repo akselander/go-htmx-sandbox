@@ -23,6 +23,8 @@ func main() {
 	}
 
 	e.Use(middleware.Logger())
+	e.Static("/dist", "dist")
+	e.Static("/css", "css")
 	e.Static("/htmx", "htmx")
 
 	e.GET("/", func(c echo.Context) error {
