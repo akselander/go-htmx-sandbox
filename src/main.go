@@ -1,29 +1,16 @@
 package main
 
 import (
-	"errors"
-	"fmt"
-	"io"
-	"net/http"
-	"os"
+	"context"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-    http.HandleFunc("/", getRoot)
-
-    err := http.ListenAndServe(":42069", nil)
-
-    if errors.Is(err, http.ErrServerClosed) {
-        fmt.Printf("server closed\n")
-    } else if err != nil {
-        os.Exit(1)
-        fmt.Printf("erro starting server: %s\n", err)
-    }
+	e := echo.New()
+	e.GET("/", root)
+	e.Logger.Fatal(e.Start(":42069"))
 }
 
-func getRoot(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("got / request\n")
-	io.WriteString(w, "This is my website!\n")
-
+func root(c echo.Context) error {
+	return view().Render(context.Background(), c.Response().Writer)
 }
-
