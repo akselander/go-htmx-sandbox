@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/dist/main.css" rel="stylesheet">
-        <script type="module" src="/htmx/htmx.js"></script>
-        <script type="module" src="/dist/bundle.js"></script>
-    </head>
-    <body hx-boost="true">
-        <div class="bg-blue-100">
-            {{.}}
-        </div>
-    </body>
-    <script type="module">
-        noop();
-    </script>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/dist/main.css" rel="stylesheet">
+    <script type="module" src="/htmx/htmx.js"></script>
+    <script type="module" src="/dist/bundle.js"></script>
+</head>
+
+<body hx-boost="true">
+    <div class="bg-blue-100">
+        {{.}}
+    </div>
+</body>
+<script type="module">
+    noop();
+</script>
+
 </html>
