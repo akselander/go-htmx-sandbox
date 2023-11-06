@@ -10,10 +10,26 @@
     <script type="module" src="/dist/bundle.js"></script>
 </head>
 
-<body hx-boost="true">
-    <div class="bg-blue-100">
+<body class="bg-background text-foreground" hx-boost="true">
+    <header>
+        <nav>
+            <ul>
+                <li><a class="button base link" href="/">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <a class="button base primary" href="/">Primary</a>
+        <a class="button base secondary" href="/">Secondary</a>
+        <a class="button base destructive" href="/">Destructive</a>
+        <a class="button base outline" href="/">Outline</a>
+        <a class="button base ghost" href="/">Ghost</a>
+        <a class="button base link" href="/">Link</a>
         {{.}}
-    </div>
+    </main>
+    <footer>
+        footer
+    </footer>
 </body>
 <script type="module">
     noop();
