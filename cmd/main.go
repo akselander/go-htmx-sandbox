@@ -4,8 +4,8 @@ import (
 	"html/template"
 	"io"
 	"log"
-	"net/http"
 
+	"akselander/sandbox/pkg/pages"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -27,9 +27,7 @@ func main() {
 	e.Static("/css", "css")
 	e.Static("/htmx", "htmx")
 
-	e.GET("/", func(c echo.Context) error {
-		return c.Render(http.StatusOK, "index.html", "Sandbox time!")
-	})
+	e.GET("/", pages.Index)
 
 	e.Logger.Fatal(e.Start(":42069"))
 }

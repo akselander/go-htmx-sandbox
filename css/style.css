@@ -24,6 +24,7 @@
     --color-ring: 215 20.2% 65.1%;
     --color-radius: 0.5rem;
 }
+
 .button {
     @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
 }
@@ -32,12 +33,17 @@
     @apply bg-primary text-primary-foreground hover:bg-primary/90;
 }
 
+
+.button.secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+
 .button.outline {
     @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
 }
 
-.button.secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+.button.destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
 }
 
 .button.ghost {
