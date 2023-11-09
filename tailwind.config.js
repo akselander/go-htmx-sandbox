@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./public/**/*.html"],
+    content: ["./pkg/**/*.html"],
     theme: {
         colors: {
             background: 'hsl(var(--color-background) / <alpha-value>)',

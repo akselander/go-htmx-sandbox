@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "prod": "tailwind && build",
-    "dev": "npm-run-all build:watch tailwind:watch",
+    "dev": "npm-run-all --parallel tailwind:watch build:watch",
     "build:watch": "pnpm run build --watch",
     "build": "rollup --config rollup.config.ts --configPlugin typescript",
     "tailwind:watch": "pnpm run tailwind --watch",

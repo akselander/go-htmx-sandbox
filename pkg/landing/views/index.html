@@ -1,0 +1,14 @@
+{{ template "layout.html" . }}
+{{define "content" }}
+{{ template "header" . }}
+<main>
+    <a class="button base primary" href="/">Primary</a>
+    <a class="button base secondary" href="/">Secondary</a>
+    <a class="button base destructive" href="/">Destructive</a>
+    <a class="button base outline" href="/">Outline</a>
+    <a class="button base ghost" href="/">Ghost</a>
+    <a class="button base link" href="/">Link</a>
+    {{.}}
+</main>
+{{ template "footer" . }}
+{{ end }}

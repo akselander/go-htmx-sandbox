@@ -5,13 +5,14 @@ import (
 	"io"
 	"log"
 
-	"akselander/sandbox/pkg/pages"
+	"akselander/sandbox/pkg/chat"
+	"akselander/sandbox/pkg/landing"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
-	tmpls, err := template.New("").ParseGlob("public/views/*.html")
+	tmpls, err := template.New("").ParseGlob("pkg/*/views/*.html")
 
 	if err != nil {
 		log.Fatalf("Could not initialize templates: %v", err)
@@ -27,9 +28,10 @@ func main() {
 	e.Static("/css", "css")
 	e.Static("/htmx", "htmx")
 
-	e.GET("/", pages.Index)
+	e.GET("/", landing.Index)
+	chat.Routes(e.Group("/chat"))
 
-	e.Logger.Fatal(e.Start(":42069"))
+	e.Logger.Fatal(e.Start(":2137"))
 }
 
 func (t *TemplateRenderer) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
