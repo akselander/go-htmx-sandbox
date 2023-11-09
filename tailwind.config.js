@@ -24,7 +24,11 @@ export default {
             ring: 'hsl(var(--color-ring) / <alpha-value>)',
             radius: 'hsl(var(--color-radius) / <alpha-value>)',
         },
-        extend: {},
+        extend: {
+            spacing: {
+                standard: "1rem",
+            }
+        },
     },
     plugins: [],
 }

@@ -24,6 +24,7 @@ func main() {
 	}
 
 	e.Use(middleware.Logger())
+	e.Pre(middleware.AddTrailingSlash())
 	e.Static("/dist", "dist")
 	e.Static("/css", "css")
 	e.Static("/htmx", "htmx")

@@ -2,14 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
-    --color-background: 0 0% 100%;
+    --color-background: 0 0 100%;
     --color-foreground: 222.2 47.4% 11.2%;
     --color-muted: 210 40% 96.1%;
     --color-muted-foreground: 215.4 16.3% 46.9%;
-    --color-card: 0 0% 100%;
+    --color-card: 0 0 100%;
     --color-card-foreground: 222.2 47.4% 11.2%;
-    --color-popover: 0 0% 100%;
+    --color-popover: 0 0 100%;
     --color-popover-foreground: 222.2 47.4% 11.2%;
     --color-border: 214.3 31.8% 91.4%;
     --color-input: 214.3 31.8% 91.4%;
@@ -24,48 +28,105 @@
     --color-ring: 215 20.2% 65.1%;
     --color-radius: 0.5rem;
 }
+@layer base {
+    html, body {
+        @apply h-full;
+    }
 
-.button {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+    body {
+        display:grid;
+        grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
+    }
+
+    #header {
+        grid-row: header;
+    }
+
+    #content {
+        grid-row: content;
+    }
+
+    #footer {
+        grid-row: footer;
+    }
+
+    input, textarea {
+        @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground;
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+        @apply disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    input[type=file] {
+        @apply border-0 text-sm font-medium;
+        background-color: transparent;
+    }
+
+    textarea {
+        display: flex;
+        @apply text-base;
+    }
 }
 
-.button.primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90;
-}
+@layer components {
+    .button {
+        @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+        @apply disabled:pointer-events-none disabled:opacity-50;
+    }
 
+    .button.primary {
+        @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    }
 
-.button.secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
-}
+    .button.secondary {
+        @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    }
 
-.button.outline {
-    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
-}
+    .button.outline {
+        @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+    }
 
-.button.destructive {
-    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
-}
+    .button.destructive {
+        @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+    }
 
-.button.ghost {
-    @apply hover:bg-accent hover:text-accent-foreground;
-}
+    .button.ghost {
+        @apply hover:bg-accent hover:text-accent-foreground;
+    }
 
-.button.link {
-    @apply text-primary underline-offset-4 hover:underline;
-}
+    .button.link {
+        @apply text-primary underline-offset-4 hover:underline;
+    }
 
-.button.base {
-    @apply h-10 px-4 py-2;
-}
+    .button.base {
+        @apply h-10 px-4 py-2;
+    }
 
-.button.sm {
-    @apply h-9 rounded-md px-3;
-}
+    .button.sm {
+        @apply h-9 rounded-md px-3;
+    }
 
-.button.lg {
-    @apply h-11 rounded-md px-8;
-}
+    .button.lg {
+        @apply h-11 rounded-md px-8;
+    }
 
-.button.icon {
-    @apply h-10 w-10;
+    .button.icon {
+        @apply h-10 w-10;
+    }
+
+    .card {
+        @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+    }
+
+    .card > .header {
+        @apply flex flex-col space-y-1.5 p-6;
+    }
+
+    .card > .title {
+        @apply text-sm text-muted-foreground;
+    }
+
+    .card > .content {
+        @apply p-6 pt-0;
+    }
 }

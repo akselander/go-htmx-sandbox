@@ -11,23 +11,15 @@
 </head>
 
 <body class="bg-background text-foreground" hx-boost="true">
-    <header>
-        <nav>
-            <ul>
-                <li><a class="button base link" href="/">Home</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        {{.}}
-        Chat
+    {{ template "header" . }}
+    <main id="content" class="p-standard flex flex-col">
+        <div class="flex-1"></div>
+        <form class="flex">
+            <textarea></textarea>
+            <button type="submit" class="button icon ghost">{{ template "svg-arrow-right" }}</button>
+        </form>
     </main>
-    <footer>
-        footer
-    </footer>
+    {{ template "footer" . }}
 </body>
-<script type="module">
-    noop();
-</script>
 
 </html>

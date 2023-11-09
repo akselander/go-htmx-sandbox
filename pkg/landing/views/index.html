@@ -1,14 +1,37 @@
-{{ template "layout.html" . }}
-{{define "content" }}
-{{ template "header" . }}
-<main>
-    <a class="button base primary" href="/">Primary</a>
-    <a class="button base secondary" href="/">Secondary</a>
-    <a class="button base destructive" href="/">Destructive</a>
-    <a class="button base outline" href="/">Outline</a>
-    <a class="button base ghost" href="/">Ghost</a>
-    <a class="button base link" href="/">Link</a>
-    {{.}}
-</main>
-{{ template "footer" . }}
-{{ end }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/dist/main.css" rel="stylesheet">
+    <script type="module" src="/htmx/htmx.js"></script>
+    <script type="module" src="/dist/bundle.js"></script>
+</head>
+
+<body class="bg-background text-foreground" hx-boost="true">
+    {{ template "header" . }}
+    <main id="content" class="p-standard">
+        <h1 class="text-4xl">Landing Page</h1>
+        <section class="card">
+            <header class="header">
+                <h2 class="title text-2xl">Button showcase</h2>
+            </header>
+            <div class="content">
+                <p><a class="button base primary" href="/">Primary</a></p>
+                <p><a class="button base secondary" href="/">Secondary</a></p>
+                <p><a class="button base destructive" href="/">Destructive</a></p>
+                <p><a class="button base outline" href="/">Outline</a></p>
+                <p><a class="button base ghost" href="/">Ghost</a></p>
+                <p><a class="button base link" href="/">Link</a></p>
+            </div>
+        </section>
+    </main>
+    {{ template "footer" . }}
+</body>
+<script type="module">
+    noop();
+</script>
+
+</html>
