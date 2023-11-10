@@ -1,6 +1,5 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 * {
     box-sizing: border-box;
@@ -28,6 +27,7 @@
     --color-ring: 215 20.2% 65.1%;
     --color-radius: 0.5rem;
 }
+
 @layer base {
     html, body {
         @apply h-full;
@@ -44,6 +44,7 @@
 
     #content {
         grid-row: content;
+        @apply space-y-standard;
     }
 
     #footer {
@@ -65,55 +66,72 @@
         display: flex;
         @apply text-base;
     }
-}
 
-@layer components {
-    .button {
+   button, .button {
         @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
         @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
         @apply disabled:pointer-events-none disabled:opacity-50;
+        @apply h-10 px-4 py-2;
+        --hover-bg-color: currentcolor;
+        --hover-bg-alpha: 1;
+        --hover-text-color: currentcolor;
     }
 
-    .button.primary {
-        @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    :is(button, .button):hover {
+        background-color: hsl(var(--hover-bg-color) / var(--hover-bg-alpha));
+        color: hsl(var(--hover-text-color));
     }
 
-    .button.secondary {
-        @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    .primary {
+        @apply bg-primary text-primary-foreground;
+        --hover-bg-alpha: 0.9;
     }
 
+    .secondary {
+        @apply bg-secondary text-secondary-foreground;
+        --hover-bg-color: var(--color-secondary);
+        --hover-bg-alpha: 0.8;
+    }
+
+    button.outline,
     .button.outline {
         @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
     }
 
+    button.destructive,
     .button.destructive {
         @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
     }
 
+    button.ghost,
     .button.ghost {
         @apply hover:bg-accent hover:text-accent-foreground;
     }
 
+    a:not(.button),
+    button.link,
     .button.link {
         @apply text-primary underline-offset-4 hover:underline;
     }
 
-    .button.base {
-        @apply h-10 px-4 py-2;
-    }
-
+    button.sm,
     .button.sm {
-        @apply h-9 rounded-md px-3;
+        @apply h-9 rounded-md px-3 py-0;
     }
 
+    button.lg,
     .button.lg {
-        @apply h-11 rounded-md px-8;
+        @apply h-11 rounded-md px-8 py-0;
     }
 
+    button.icon,
     .button.icon {
-        @apply h-10 w-10;
+        @apply h-10 w-10 p-0;
     }
 
+}
+
+@layer components {
     .card {
         @apply rounded-lg border bg-card text-card-foreground shadow-sm;
     }
@@ -130,3 +148,5 @@
         @apply p-6 pt-0;
     }
 }
+
+@tailwind utilities;
