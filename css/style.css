@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 * {
     box-sizing: border-box;
@@ -36,6 +37,9 @@
     body {
         display:grid;
         grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
+        --text-color: theme(colors.foreground);
+        --bg-color: theme(colors.background);
+        --hover-text-color: theme(colors.foreground / 80);
     }
 
     #header {
@@ -51,69 +55,26 @@
         grid-row: footer;
     }
 
-    input, textarea {
-        @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground;
-        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-        @apply disabled:cursor-not-allowed disabled:opacity-50;
-    }
-
-    input[type=file] {
-        @apply border-0 text-sm font-medium;
-        background-color: transparent;
-    }
-
-    textarea {
-        display: flex;
-        @apply text-base;
-    }
-
-   button, .button {
+    button, .button {
         @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
         @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
         @apply disabled:pointer-events-none disabled:opacity-50;
         @apply h-10 px-4 py-2;
-        --hover-bg-color: currentcolor;
-        --hover-bg-alpha: 1;
-        --hover-text-color: currentcolor;
     }
 
     :is(button, .button):hover {
-        background-color: hsl(var(--hover-bg-color) / var(--hover-bg-alpha));
-        color: hsl(var(--hover-text-color));
+        background-color: var(--hover-bg-color);
+        color: var(--hover-text-color);
     }
 
-    .primary {
-        @apply bg-primary text-primary-foreground;
-        --hover-bg-alpha: 0.9;
-    }
-
-    .secondary {
-        @apply bg-secondary text-secondary-foreground;
-        --hover-bg-color: var(--color-secondary);
-        --hover-bg-alpha: 0.8;
-    }
-
-    button.outline,
-    .button.outline {
-        @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
-    }
-
-    button.destructive,
-    .button.destructive {
-        @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
-    }
-
-    button.ghost,
-    .button.ghost {
-        @apply hover:bg-accent hover:text-accent-foreground;
-    }
 
     a:not(.button),
-    button.link,
-    .button.link {
+    .link {
         @apply text-primary underline-offset-4 hover:underline;
     }
+}
 
+@layer components {
     button.sm,
     .button.sm {
         @apply h-9 rounded-md px-3 py-0;
@@ -129,9 +90,59 @@
         @apply h-10 w-10 p-0;
     }
 
-}
+    [type="text"], input:where(:not([type])), [type="email"],
+    [type="url"], [type="password"], [type="number"], [type="date"],
+    [type="datetime-local"], [type="month"], [type="search"], [type="tel"],
+    [type="time"], [type="week"], [multiple], textarea, select {
+        @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground;
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+        @apply disabled:cursor-not-allowed disabled:opacity-50;
+    }
 
-@layer components {
+    input[type="file"] {
+        @apply border-0 text-sm font-medium;
+        background-color: transparent;
+    }
+
+    [type="checkbox"] {
+        @apply w-5 h-5 mx-2;
+        @apply rounded-md;
+        @apply focus:ring-2 focus-visible:ring-2;
+        @apply border;
+        color: var(--text-color);
+        border-color: var(--text-color);
+        --tw-ring-color: var(--text-color);
+    }
+
+    [type="checkbox"]:checked:hover,
+    [type="checkbox"]:checked:focus,
+    [type="radio"]:checked:hover,
+    [type="radio"]:checked:focus {
+        border-color: var(--text-color);
+        background-color: theme(colors.primary);
+    }
+
+    [type="checkbox"]:checked {
+        border-color: var(--text-color);
+        background-color: theme(colors.primary);
+    }
+
+    [type="checkbox"]:focus,
+    [type="checkbox"]:focus-visible {
+        border-color: theme(colors.primary);
+        --tw-ring-color: var(--text-color);
+    }
+
+    [type="checkbox"]:hover {
+        border-color: theme(colors.primary);
+        --tw-ring-color: var(--hover-text-color);
+    }
+
+    textarea {
+        display: flex;
+        @apply text-base;
+    }
+
     .card {
         @apply rounded-lg border bg-card text-card-foreground shadow-sm;
     }
@@ -147,6 +158,40 @@
     .card > .content {
         @apply p-6 pt-0;
     }
-}
 
-@tailwind utilities;
+    .primary {
+        @apply bg-primary text-primary-foreground;
+        --bg-color: theme(colors.primary);
+        --text-color: theme(colors.primary-foreground);
+        --hover-bg-color: theme(colors.primary / 0.9);
+        --hover-text-color: theme(colors.primary-foreground);
+    }
+
+    .secondary {
+        @apply bg-secondary text-secondary-foreground;
+        --bg-color: theme(colors.secondary);
+        --text-color: theme(colors.secondary-foreground);
+        --hover-bg-color: theme(colors.secondary / 0.8);
+        --hover-text-color: theme(colors.secondary-foreground);
+    }
+
+    .outline {
+        @apply border border-input bg-background;
+        --bg-color: theme(colors.background);
+        --hover-bg-color: theme(colors.accent);
+        --hover-text-color: theme(colors.accent-foreground);
+    }
+
+    .destructive {
+        @apply bg-destructive text-destructive-foreground;
+        --bg-color: theme(colors.destructive);
+        --text-color: theme(colors.destructive-foreground);
+        --hover-bg-color: theme(colors.destructive / 0.9);
+        --hover-text-color: theme(colors.destructive-foreground);
+    }
+
+    .ghost {
+        --hover-bg-color: theme(colors.accent);
+        --hover-text-color: theme(colors.accent-foreground);
+    }
+}
