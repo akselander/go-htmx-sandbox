@@ -6,30 +6,92 @@
   box-sizing: border-box;
 }
 
-:root {
-  --color-background: 0 0 100%;
-  --color-foreground: 222.2 47.4% 11.2%;
-  --color-muted: 210 40% 96.1%;
-  --color-muted-foreground: 215.4 16.3% 46.9%;
-  --color-card: 0 0 100%;
-  --color-card-foreground: 222.2 47.4% 11.2%;
-  --color-popover: 0 0 100%;
-  --color-popover-foreground: 222.2 47.4% 11.2%;
-  --color-border: 214.3 31.8% 91.4%;
-  --color-input: 214.3 31.8% 91.4%;
-  --color-primary: 222.2 47.4% 11.2%;
-  --color-primary-foreground: 210 40% 98%;
-  --color-secondary: 210 40% 96.1%;
-  --color-secondary-foreground: 222.2 47.4% 11.2%;
-  --color-accent: 210 40% 96.1%;
-  --color-accent-foreground: 222.2 47.4% 11.2%;
-  --color-destructive: 0 100% 50%;
-  --color-destructive-foreground: 210 40% 98%;
-  --color-ring: 215 20.2% 65.1%;
-  --color-radius: 0.5rem;
-}
-
 @layer base {
+  :root {
+    --color-white: 0 0% 100%;
+
+    --color-slate-900: 222.2 47.4% 11.2%;
+    --color-slate-50: 210 40% 98%;
+    --color-slate-100: 210 40% 96.1%;
+    --color-slate-200: 214.3 31.8% 91.4%;
+    --color-slate-400: 215 20.2% 65.1%;
+    --color-slate-500: 215.4 16.3% 46.9%;
+
+    --color-zinc-50: 0 0% 98%;
+    --color-zinc-100: 240 4.9% 83.9%;
+    --color-zinc-400: 240 5% 64.9%;
+    --color-zinc-800: 240 3.7% 15.9%;
+    --color-zinc-900: 240 5.9% 10%;
+    --color-zinc-950: 240 10% 3.9%;
+
+    --color-red-50: 0 85.7% 97.3%;
+    --color-red-600: 0 100% 50%;
+    --color-red-900: 0 62.8% 30.6%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --color-background: var(--color-white);
+    --color-foreground: var(--color-slate-900);
+    --color-muted: var(--color-slate-100);
+    --color-muted-foreground: var(--color-slate-500);
+    --color-card: var(--color-white);
+    --color-card-foreground: var(--color-slate-900);
+    --color-popover: var(--color-white);
+    --color-popover-foreground: var(--color-slate-900);
+    --color-border: var(--color-slate-200);
+    --color-input: var(--color-slate-200);
+    --color-primary: var(--color-slate-900);
+    --color-primary-foreground: var(--color-slate-100);
+    --color-secondary: var(--color-slate-100);
+    --color-secondary-foreground: var(--color-slate-900);
+    --color-accent: var(--color-slate-100);
+    --color-accent-foreground: var(--color-slate-900);
+    --color-destructive: var(--color-red-600);
+    --color-destructive-foreground: var(--color-slate-100);
+    --color-ring: var(--color-slate-400);
+    --svg-checkbox: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23f1f5f9' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    --svg-radio: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23f1f5f9' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+    --svg-indeterminate: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='%23f1f5f9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
+  }
+
+  .dark {
+    --color-background: var(--color-zinc-950);
+    --color-foreground: var(--color-zinc-50);
+    --color-muted: var(--color-zinc-800);
+    --color-muted-foreground: var(--color-zinc-400);
+    --color-card: var(--color-zinc-950);
+    --color-card-foreground: var(--color-zinc-50);
+    --color-popover: var(--color-zinc-950);
+    --color-popover-foreground: var(--color-zinc-50);
+    --color-border: var(--color-slate-200);
+    --color-input: var(--color-slate-200);
+    --color-primary: var(--color-zinc-50);
+    --color-primary-foreground: var(--color-zinc-900);
+    --color-secondary: var(--color-zinc-800);
+    --color-secondary-foreground: var(--color-zinc-50);
+    --color-accent: var(--color-zinc-800);
+    --color-accent-foreground: var(--color-zinc-50);
+    --color-destructive: var(--color-red-900);
+    --color-destructive-foreground: var(--color-red-50);
+    --color-ring: var(--color-slate-100);
+    --svg-checkbox: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%2318181b' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    --svg-radio: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%2318181b' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+    --svg-indeterminate: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='%2318181b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      @apply light;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      @apply dark;
+    }
+  }
+
   html,
   body {
     @apply h-full;
@@ -38,9 +100,7 @@
   body {
     display: grid;
     grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
-    --text-color: theme(colors.foreground);
-    --bg-color: theme(colors.background);
-    --hover-text-color: theme(colors.foreground / 80);
+    @apply bg-background text-foreground;
   }
 
   #header {
@@ -56,38 +116,6 @@
     grid-row: footer;
   }
 
-  [type="text"],
-  input:where(:not([type])),
-  [type="email"],
-  [type="url"],
-  [type="password"],
-  [type="number"],
-  [type="date"],
-  [type="datetime-local"],
-  [type="month"],
-  [type="search"],
-  [type="tel"],
-  [type="time"],
-  [type="week"],
-  [multiple],
-  textarea,
-  select {
-    color: var(--text-color);
-    --tw-ring-offset-color: var(--bg-color);
-    @apply shadow-current appearance-none;
-    @apply focus:outline-2 focus:outline-transparent focus:outline-offset-2 focus:ring-current focus:ring-offset-0 focus:border-current;
-    @apply focus-visible:outline-2 focus-visible:outline-transparent focus-visible:outline-offset-2 focus-visible:ring-current focus-visible:ring-offset-0 focus-visible:border-current;
-  }
-  input::-moz-placeholder,
-  textarea::-moz-placeholder {
-    color: var(--text-color);
-    opacity: 1;
-  }
-  input::placeholder,
-  textarea::placeholder {
-    color: var(--text-color);
-    opacity: 1;
-  }
   ::-webkit-datetime-edit-fields-wrapper {
     padding: 0;
   }
@@ -133,62 +161,56 @@
   [type="radio"] {
     @apply w-5 h-5 mx-2 p-0;
     @apply inline-block bg-origin-border align-middle select-none appearance-none flex-shrink-0;
-    @apply border border-current shadow-current;
-    @apply focus:outline-2 focus:outline-current focus:ring-2 focus:ring-transparent;
-    @apply focus-visible:outline-2 focus-visible:outline-current focus-visible:ring-2 focus-visible:ring-transparent;
-    @apply checked:bg-primary checked:border-current checked:bg-no-repeat checked:bg-center;
-    @apply checked:hover:border-current checked:hover:bg-primary/90;
-    @apply indeterminate:bg-primary indeterminate:border-current indeterminate:bg-no-repeat indeterminate:bg-center;
-    @apply indeterminate:hover:border-current indeterminate:hover:bg-primary/90;
+    @apply border border-foreground shadow-current;
+    @apply focus:outline-2 focus:outline-transparent focus:ring-2 focus:ring-ring;
+    @apply focus-visible:outline-2 focus-visible:outline-transparent focus-visible:ring-2 focus-visible:ring-ring;
+    @apply checked:bg-primary checked:border-foreground checked:bg-no-repeat checked:bg-center;
+    @apply checked:hover:border-foreground checked:hover:bg-primary/90;
+    @apply indeterminate:bg-primary indeterminate:border-foreground indeterminate:bg-no-repeat indeterminate:bg-center;
+    @apply indeterminate:hover:border-foreground indeterminate:hover:bg-primary/90;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
   [type="checkbox"] {
     @apply rounded-md;
     @apply border;
-    --tw-ring-color: var(--text-color);
   }
   [type="radio"] {
-      @apply rounded-full;
+    @apply rounded-full;
   }
   [type="checkbox"]:checked,
   [type="radio"]:checked {
     background-size: 100% 100%;
   }
   [type="checkbox"]:checked {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    background-image: var(--svg-checkbox);
   }
   [type="radio"]:checked {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+    background-image: var(--svg-radio);
   }
 
   [type="checkbox"]:indeterminate {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
+    background-image: var(--svg-indeterminate);
   }
-
-  input, textarea {
-      @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background;
-      @apply placeholder:text-muted-foreground;
-      @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
-      @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-      @apply disabled:cursor-not-allowed disabled:opacity-50;
+  input,
+  textarea {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background;
+    @apply placeholder:text-muted-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   input {
-      @apply file:border-0 file:bg-transparent file:text-sm file:font-medium;
+    @apply file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-current;
   }
 
   button,
   .button {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-transparent transition-colors;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
     @apply disabled:pointer-events-none disabled:opacity-50;
     @apply h-10 px-4 py-2;
-  }
-
-  :is(button, .button):hover {
-    background-color: var(--hover-bg-color);
-    color: var(--hover-text-color);
   }
 
   a:not(.button),
@@ -229,39 +251,24 @@
     @apply p-6 pt-0;
   }
 
-  .primary {
-    @apply bg-primary text-primary-foreground;
-    --bg-color: theme(colors.primary);
-    --text-color: theme(colors.primary-foreground);
-    --hover-bg-color: theme(colors.primary / 0.9);
-    --hover-text-color: theme(colors.primary-foreground);
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
   }
 
-  .secondary {
-    @apply bg-secondary text-secondary-foreground;
-    --bg-color: theme(colors.secondary);
-    --text-color: theme(colors.secondary-foreground);
-    --hover-bg-color: theme(colors.secondary / 0.8);
-    --hover-text-color: theme(colors.secondary-foreground);
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
   }
 
-  .outline {
-    @apply border border-input bg-background;
-    --bg-color: theme(colors.background);
-    --hover-bg-color: theme(colors.accent);
-    --hover-text-color: theme(colors.accent-foreground);
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
   }
 
-  .destructive {
-    @apply bg-destructive text-destructive-foreground;
-    --bg-color: theme(colors.destructive);
-    --text-color: theme(colors.destructive-foreground);
-    --hover-bg-color: theme(colors.destructive / 0.9);
-    --hover-text-color: theme(colors.destructive-foreground);
+  .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
   }
 
-  .ghost {
-    --hover-bg-color: theme(colors.accent);
-    --hover-text-color: theme(colors.accent-foreground);
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
   }
 }
+

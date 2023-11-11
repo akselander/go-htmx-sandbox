@@ -15,25 +15,57 @@
     <main id="content" class="p-standard">
         <h1 class="text-4xl">Landing Page</h1>
         <p><a href="https://go.dev/">Visit Go docs</a> to learn about go.</p>
-        <section class="card">
+        <section class="card light">
             <header class="header">
-                <h2 class="title text-2xl">Button showcase</h2>
+                <h2 class="title text-2xl">Light Button showcase</h2>
             </header>
             <div class="content flex flex-wrap gap-standard">
-                <p><button class="primary">Primary</button></p>
-                <p><a class="button secondary" href="/">Secondary</a></p>
-                <p><a class="button destructive" href="/">Destructive</a></p>
-                <p><a class="button outline" href="/">Outline</a></p>
-                <p><a class="button ghost" href="/">Ghost</a></p>
+                <p><button class="btn-primary">Primary</button></p>
+                <p><a class="button btn-secondary" href="/">Secondary</a></p>
+                <p><a class="button btn-destructive" href="/">Destructive</a></p>
+                <p><a class="button btn-outline" href="/">Outline</a></p>
+                <p><a class="button btn-ghost" href="/">Ghost</a></p>
                 <p><a class="button link" href="/">Link</a></p>
-                <p><button class="primary sm">Small</button></p>
-                <p><button class="primary lg md:sm">Large</button></p>
-                <p><button class="primary hover:bg-destructive h-20">Custom</button></p>
+                <p><button class="btn-primary sm">Small</button></p>
+                <p><button class="btn-primary lg md:sm">Large</button></p>
+                <p><button class="btn-primary hover:bg-destructive h-20">Custom</button></p>
             </div>
         </section>
-        <section class="card">
+        <section class="card dark">
             <header class="header">
-                <h2 class="title text-2xl">Input showcase</h2>
+                <h2 class="title text-2xl">Dark Button showcase</h2>
+            </header>
+            <div class="content flex flex-wrap gap-standard">
+                <p><button class="btn-primary">Primary</button></p>
+                <p><a class="button btn-secondary" href="/">Secondary</a></p>
+                <p><a class="button btn-destructive" href="/">Destructive</a></p>
+                <p><a class="button btn-outline" href="/">Outline</a></p>
+                <p><a class="button btn-ghost" href="/">Ghost</a></p>
+                <p><a class="button link" href="/">Link</a></p>
+                <p><button class="btn-primary sm">Small</button></p>
+                <p><button class="btn-primary lg md:sm">Large</button></p>
+                <p><button class="btn-primary hover:bg-destructive h-20">Custom</button></p>
+            </div>
+        </section>
+        <section class="card light">
+            <header class="header">
+                <h2 class="title text-2xl">Light Input showcase</h2>
+            </header>
+            <div class="content flex flex-wrap gap-standard">
+                <label>Text<input type="text" /></label>
+                <label>Number<input type="number" /></label>
+                <label>File<input type="file" /></label>
+                <label>Email<input type="email" /> </label>
+                <label>Checkbox<input type="checkbox" checked /> </label>
+                <label>Date<input type="date" /> </label>
+                <label>Textarea<textarea> </textarea></label>
+                <label>Radio<input name="choice" type="radio" /></label>
+                <label>Radio<input name="choice" type="radio" /></label>
+            </div>
+        </section>
+        <section class="card dark">
+            <header class="header">
+                <h2 class="title text-2xl">Dark Input showcase</h2>
             </header>
             <div class="content flex flex-wrap gap-standard">
                 <label>Text<input type="text" /></label>
@@ -43,22 +75,8 @@
                 <label>Checkbox<input type="checkbox" /> </label>
                 <label>Date<input type="date" /> </label>
                 <label>Textarea<textarea> </textarea></label>
-                <label>Radio<input type="radio" /></label>
-            </div>
-        </section>
-        <section class="card primary">
-            <header class="header">
-                <h2 class="title text-2xl">Input showcase</h2>
-            </header>
-            <div class="content flex flex-wrap gap-standard">
-                <label>Text<input type="text" /></label>
-                <label>Number<input type="number" /></label>
-                <label>File<input type="file" /></label>
-                <label>Email<input type="email" /> </label>
-                <label>Checkbox<input type="checkbox" /> </label>
-                <label>Date<input type="date" /> </label>
-                <label>Textarea<textarea> </textarea></label>
-                <label>Radio<input type="radio" /></label>
+                <label>Radio<input name="choice" type="radio" /></label>
+                <label>Radio<input name="choice" type="radio" /></label>
             </div>
         </section>
     </main>

@@ -29,11 +29,11 @@ export default {
       "destructive-foreground":
         "hsl(var(--color-destructive-foreground) / <alpha-value>)",
       ring: "hsl(var(--color-ring) / <alpha-value>)",
-      radius: "hsl(var(--color-radius) / <alpha-value>)",
     },
     extend: {
       spacing: {
         standard: "1rem",
+        radius: "var(--radius)",
       },
     },
   },
