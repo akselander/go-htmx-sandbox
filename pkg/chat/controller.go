@@ -13,5 +13,5 @@ func Routes(g *echo.Group) {
 
 func index(c echo.Context) error {
 	fmt.Printf("hey")
-	return c.Render(http.StatusOK, "chat.html", "Hello")
+	return c.Render(http.StatusOK, "chat-page", "Hello")
 }

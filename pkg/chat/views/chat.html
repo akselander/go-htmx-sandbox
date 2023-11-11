@@ -1,25 +1,36 @@
+{{ block "chat-page" . }}
 <!DOCTYPE html>
 <html lang="en">
 
+{{ template "chat-head" . }}
+
+<body hx-boost="true">
+    {{ template "header" . }}
+    <main id="content" class="p-standard flex flex-col">
+        <div class="flex-1"></div>
+        {{ template "chat-input" . }}
+    </main>
+    {{ template "footer" . }}
+</body>
+
+</html>
+{{ end }}
+
+{{ block "chat-input" . }}
+<form class="flex gap-standard">
+    <textarea></textarea>
+    <button type="submit" class="button icon ghost">{{ template "svg-arrow-right" }}</button>
+</form>
+{{ end }}
+
+{{ block "chat-head" . }}
+
 <head>
-    <title></title>
+    <title>Chat</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/dist/main.css" rel="stylesheet">
     <script type="module" src="/htmx/htmx.js"></script>
     <script type="module" src="/dist/bundle.js"></script>
 </head>
-
-<body class="bg-background text-foreground" hx-boost="true">
-    {{ template "header" . }}
-    <main id="content" class="p-standard flex flex-col">
-        <div class="flex-1"></div>
-        <form class="flex">
-            <textarea></textarea>
-            <button type="submit" class="button icon primary">{{ template "svg-arrow-right" }}</button>
-        </form>
-    </main>
-    {{ template "footer" . }}
-</body>
-
-</html>
+{{ end }}

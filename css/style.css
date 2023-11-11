@@ -99,7 +99,7 @@
 
   body {
     display: grid;
-    grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
+    grid-template-rows: [header-start] 4rem [header-end content-start] auto [content-end footer-start] 4rem [footer-end];
     @apply bg-background text-foreground;
   }
 
@@ -159,15 +159,15 @@
   }
   [type="checkbox"],
   [type="radio"] {
-    @apply w-5 h-5 mx-2 p-0;
+    @apply w-5 h-5 m-standard p-0;
     @apply inline-block bg-origin-border align-middle select-none appearance-none flex-shrink-0;
-    @apply border border-foreground shadow-current;
+    @apply border border-foreground shadow-foreground;
     @apply focus:outline-2 focus:outline-transparent focus:ring-2 focus:ring-ring;
     @apply focus-visible:outline-2 focus-visible:outline-transparent focus-visible:ring-2 focus-visible:ring-ring;
-    @apply checked:bg-primary checked:border-foreground checked:bg-no-repeat checked:bg-center;
-    @apply checked:hover:border-foreground checked:hover:bg-primary/90;
-    @apply indeterminate:bg-primary indeterminate:border-foreground indeterminate:bg-no-repeat indeterminate:bg-center;
-    @apply indeterminate:hover:border-foreground indeterminate:hover:bg-primary/90;
+    @apply checked:bg-foreground checked:border-foreground checked:bg-no-repeat checked:bg-center;
+    @apply checked:hover:border-foreground checked:hover:bg-foreground/90;
+    @apply indeterminate:bg-background indeterminate:border-foreground indeterminate:bg-no-repeat indeterminate:bg-center;
+    @apply indeterminate:hover:border-foreground indeterminate:hover:bg-background/90;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -194,11 +194,17 @@
   }
   input,
   textarea {
-    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background;
+    @apply flex h-10 w-full px-3 py-2 text-sm;
+    @apply bg-background ring-offset-background;
+    @apply border border-input rounded-md;
     @apply placeholder:text-muted-foreground;
     @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
     @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  textarea {
+      @apply resize-none rounded-full;
   }
 
   input {
@@ -207,15 +213,19 @@
 
   button,
   .button {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-transparent transition-colors;
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors;
     @apply disabled:pointer-events-none disabled:opacity-50;
     @apply h-10 px-4 py-2;
   }
-
+  button:not(.link),
+  .button:not(.link) {
+    @apply ring-offset-background;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
   a:not(.button),
   .link {
-    @apply text-primary underline-offset-4 hover:underline;
+      @apply outline-none;
+    @apply text-primary underline-offset-4 hover:underline focus:underline focus-visible:underline;
   }
 }
 
@@ -251,23 +261,23 @@
     @apply p-6 pt-0;
   }
 
-  .btn-primary {
+  .primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/90;
   }
 
-  .btn-secondary {
+  .secondary {
     @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
   }
 
-  .btn-outline {
+  .outline {
     @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
   }
 
-  .btn-destructive {
+  .destructive {
     @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
   }
 
-  .btn-ghost {
+  .ghost {
     @apply hover:bg-accent hover:text-accent-foreground;
   }
 }

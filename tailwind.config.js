@@ -32,7 +32,7 @@ export default {
     },
     extend: {
       spacing: {
-        standard: "1rem",
+        standard: "0.5rem",
         radius: "var(--radius)",
       },
     },
