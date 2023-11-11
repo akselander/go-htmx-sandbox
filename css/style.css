@@ -3,195 +3,356 @@
 @tailwind utilities;
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-    --color-background: 0 0 100%;
-    --color-foreground: 222.2 47.4% 11.2%;
-    --color-muted: 210 40% 96.1%;
-    --color-muted-foreground: 215.4 16.3% 46.9%;
-    --color-card: 0 0 100%;
-    --color-card-foreground: 222.2 47.4% 11.2%;
-    --color-popover: 0 0 100%;
-    --color-popover-foreground: 222.2 47.4% 11.2%;
-    --color-border: 214.3 31.8% 91.4%;
-    --color-input: 214.3 31.8% 91.4%;
-    --color-primary: 222.2 47.4% 11.2%;
-    --color-primary-foreground: 210 40% 98%;
-    --color-secondary: 210 40% 96.1%;
-    --color-secondary-foreground: 222.2 47.4% 11.2%;
-    --color-accent: 210 40% 96.1%;
-    --color-accent-foreground: 222.2 47.4% 11.2%;
-    --color-destructive: 0 100% 50%;
-    --color-destructive-foreground: 210 40% 98%;
-    --color-ring: 215 20.2% 65.1%;
-    --color-radius: 0.5rem;
+  --color-background: 0 0 100%;
+  --color-foreground: 222.2 47.4% 11.2%;
+  --color-muted: 210 40% 96.1%;
+  --color-muted-foreground: 215.4 16.3% 46.9%;
+  --color-card: 0 0 100%;
+  --color-card-foreground: 222.2 47.4% 11.2%;
+  --color-popover: 0 0 100%;
+  --color-popover-foreground: 222.2 47.4% 11.2%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-input: 214.3 31.8% 91.4%;
+  --color-primary: 222.2 47.4% 11.2%;
+  --color-primary-foreground: 210 40% 98%;
+  --color-secondary: 210 40% 96.1%;
+  --color-secondary-foreground: 222.2 47.4% 11.2%;
+  --color-accent: 210 40% 96.1%;
+  --color-accent-foreground: 222.2 47.4% 11.2%;
+  --color-destructive: 0 100% 50%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-ring: 215 20.2% 65.1%;
+  --color-radius: 0.5rem;
 }
 
 @layer base {
-    html, body {
-        @apply h-full;
-    }
+  html,
+  body {
+    @apply h-full;
+  }
 
-    body {
-        display:grid;
-        grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
-        --text-color: theme(colors.foreground);
-        --bg-color: theme(colors.background);
-        --hover-text-color: theme(colors.foreground / 80);
-    }
+  body {
+    display: grid;
+    grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
+    --text-color: theme(colors.foreground);
+    --bg-color: theme(colors.background);
+    --hover-text-color: theme(colors.foreground / 80);
+  }
 
-    #header {
-        grid-row: header;
-    }
+  #header {
+    grid-row: header;
+  }
 
-    #content {
-        grid-row: content;
-        @apply space-y-standard;
-    }
+  #content {
+    grid-row: content;
+    @apply space-y-standard;
+  }
 
-    #footer {
-        grid-row: footer;
-    }
+  #footer {
+    grid-row: footer;
+  }
 
-    button, .button {
-        @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
-        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-        @apply disabled:pointer-events-none disabled:opacity-50;
-        @apply h-10 px-4 py-2;
-    }
+  [type="text"],
+  input:where(:not([type])),
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bg-color);
+    border-color: var(--text-color);
+    border-width: 1px;
+    border-radius: 0px;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-shadow: 0 0 var(--text-color);
+  }
+  [type="text"]:focus,
+  input:where(:not([type])):focus,
+  [type="email"]:focus,
+  [type="url"]:focus,
+  [type="password"]:focus,
+  [type="number"]:focus,
+  [type="date"]:focus,
+  [type="datetime-local"]:focus,
+  [type="month"]:focus,
+  [type="search"]:focus,
+  [type="tel"]:focus,
+  [type="time"]:focus,
+  [type="week"]:focus,
+  [multiple]:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: var(--bg-color);
+    --tw-ring-color: var(--text-color);
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
+      var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
+      calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+      var(--tw-shadow);
+    border-color: var(--text-color);
+  }
+  input::-moz-placeholder,
+  textarea::-moz-placeholder {
+    color: var(--text-color);
+    opacity: 1;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-color);
+    opacity: 1;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1.5em;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit,
+  ::-webkit-datetime-edit-year-field,
+  ::-webkit-datetime-edit-month-field,
+  ::-webkit-datetime-edit-day-field,
+  ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-minute-field,
+  ::-webkit-datetime-edit-second-field,
+  ::-webkit-datetime-edit-millisecond-field,
+  ::-webkit-datetime-edit-meridiem-field {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  [multiple],
+  [size]:where(select:not([size="1"])) {
+    background-image: initial;
+    background-position: initial;
+    background-repeat: unset;
+    background-size: initial;
+    padding-right: 0.75rem;
+    -webkit-print-color-adjust: unset;
+    print-color-adjust: unset;
+  }
+  [type="checkbox"],
+  [type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: inline-block;
+    vertical-align: middle;
+    background-origin: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    flex-shrink: 0;
+    height: 1rem;
+    width: 1rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-color: var(--text-color);
+    border-width: 1px;
+    --tw-shadow: 0 0 var(--text-color);
+  }
+  [type="checkbox"] {
+    @apply w-5 h-5 mx-2;
+    @apply rounded-md;
+    @apply border;
+    --tw-ring-color: var(--text-color);
+  }
+  [type="radio"] {
+    border-radius: 100%;
+  }
+  [type="checkbox"]:focus,
+  [type="checkbox"]:focus-visible,
+  [type="radio"]:focus,
+  [type="radio"]:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+    --tw-ring-offset-width: 2px;
+    --tw-ring-offset-color: var(--bg-color);
+    --tw-ring-color: var(--text-color);
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
+      var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
+      calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+      var(--tw-shadow);
+  }
+  [type="checkbox"]:checked,
+  [type="radio"]:checked {
+    border-color: var(--text-color);
+    background-color: theme(colors.primary);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  [type="checkbox"]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  }
+  [type="radio"]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  }
+  [type="checkbox"]:checked:hover,
+  [type="radio"]:checked:hover {
+    border-color: var(--text-color);
+    background-color: theme(colors.primary / 0.9);
+  }
 
-    :is(button, .button):hover {
-        background-color: var(--hover-bg-color);
-        color: var(--hover-text-color);
-    }
+  [type="checkbox"]:indeterminate {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
+    border-color: var(--text-color);
+    background-color: theme(colors.primary);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  [type="checkbox"]:indeterminate:hover,
+  [type="checkbox"]:indeterminate:focus {
+    border-color: var(--text-color);
+    background-color: theme(colors.primary);
+  }
+  [type="file"] {
+    background: unset;
+    border-color: inherit;
+    border-width: 0;
+    border-radius: 0;
+    padding: 0;
+    font-size: unset;
+    line-height: inherit;
+  }
+  [type="file"]:focus {
+    outline: 1px solid ButtonText;
+    outline: 1px auto -webkit-focus-ring-color;
+  }
 
+  button,
+  .button {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+    @apply h-10 px-4 py-2;
+  }
 
-    a:not(.button),
-    .link {
-        @apply text-primary underline-offset-4 hover:underline;
-    }
+  :is(button, .button):hover {
+    background-color: var(--hover-bg-color);
+    color: var(--hover-text-color);
+  }
+
+  a:not(.button),
+  .link {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
 }
 
 @layer components {
-    button.sm,
-    .button.sm {
-        @apply h-9 rounded-md px-3 py-0;
-    }
+  button.sm,
+  .button.sm {
+    @apply h-9 rounded-md px-3 py-0;
+  }
 
-    button.lg,
-    .button.lg {
-        @apply h-11 rounded-md px-8 py-0;
-    }
+  button.lg,
+  .button.lg {
+    @apply h-11 rounded-md px-8 py-0;
+  }
 
-    button.icon,
-    .button.icon {
-        @apply h-10 w-10 p-0;
-    }
+  button.icon,
+  .button.icon {
+    @apply h-10 w-10 p-0;
+  }
 
-    [type="text"], input:where(:not([type])), [type="email"],
-    [type="url"], [type="password"], [type="number"], [type="date"],
-    [type="datetime-local"], [type="month"], [type="search"], [type="tel"],
-    [type="time"], [type="week"], [multiple], textarea, select {
-        @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground;
-        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
-        @apply disabled:cursor-not-allowed disabled:opacity-50;
-    }
+  textarea {
+    display: flex;
+    @apply text-base;
+  }
 
-    input[type="file"] {
-        @apply border-0 text-sm font-medium;
-        background-color: transparent;
-    }
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
 
-    [type="checkbox"] {
-        @apply w-5 h-5 mx-2;
-        @apply rounded-md;
-        @apply focus:ring-2 focus-visible:ring-2;
-        @apply border;
-        color: var(--text-color);
-        border-color: var(--text-color);
-        --tw-ring-color: var(--text-color);
-    }
+  .card > .header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
 
-    [type="checkbox"]:checked:hover,
-    [type="checkbox"]:checked:focus,
-    [type="radio"]:checked:hover,
-    [type="radio"]:checked:focus {
-        border-color: var(--text-color);
-        background-color: theme(colors.primary);
-    }
+  .card > .title {
+    @apply text-sm text-muted-foreground;
+  }
 
-    [type="checkbox"]:checked {
-        border-color: var(--text-color);
-        background-color: theme(colors.primary);
-    }
+  .card > .content {
+    @apply p-6 pt-0;
+  }
 
-    [type="checkbox"]:focus,
-    [type="checkbox"]:focus-visible {
-        border-color: theme(colors.primary);
-        --tw-ring-color: var(--text-color);
-    }
+  .primary {
+    @apply bg-primary text-primary-foreground;
+    --bg-color: theme(colors.primary);
+    --text-color: theme(colors.primary-foreground);
+    --hover-bg-color: theme(colors.primary / 0.9);
+    --hover-text-color: theme(colors.primary-foreground);
+  }
 
-    [type="checkbox"]:hover {
-        border-color: theme(colors.primary);
-        --tw-ring-color: var(--hover-text-color);
-    }
+  .secondary {
+    @apply bg-secondary text-secondary-foreground;
+    --bg-color: theme(colors.secondary);
+    --text-color: theme(colors.secondary-foreground);
+    --hover-bg-color: theme(colors.secondary / 0.8);
+    --hover-text-color: theme(colors.secondary-foreground);
+  }
 
-    textarea {
-        display: flex;
-        @apply text-base;
-    }
+  .outline {
+    @apply border border-input bg-background;
+    --bg-color: theme(colors.background);
+    --hover-bg-color: theme(colors.accent);
+    --hover-text-color: theme(colors.accent-foreground);
+  }
 
-    .card {
-        @apply rounded-lg border bg-card text-card-foreground shadow-sm;
-    }
+  .destructive {
+    @apply bg-destructive text-destructive-foreground;
+    --bg-color: theme(colors.destructive);
+    --text-color: theme(colors.destructive-foreground);
+    --hover-bg-color: theme(colors.destructive / 0.9);
+    --hover-text-color: theme(colors.destructive-foreground);
+  }
 
-    .card > .header {
-        @apply flex flex-col space-y-1.5 p-6;
-    }
-
-    .card > .title {
-        @apply text-sm text-muted-foreground;
-    }
-
-    .card > .content {
-        @apply p-6 pt-0;
-    }
-
-    .primary {
-        @apply bg-primary text-primary-foreground;
-        --bg-color: theme(colors.primary);
-        --text-color: theme(colors.primary-foreground);
-        --hover-bg-color: theme(colors.primary / 0.9);
-        --hover-text-color: theme(colors.primary-foreground);
-    }
-
-    .secondary {
-        @apply bg-secondary text-secondary-foreground;
-        --bg-color: theme(colors.secondary);
-        --text-color: theme(colors.secondary-foreground);
-        --hover-bg-color: theme(colors.secondary / 0.8);
-        --hover-text-color: theme(colors.secondary-foreground);
-    }
-
-    .outline {
-        @apply border border-input bg-background;
-        --bg-color: theme(colors.background);
-        --hover-bg-color: theme(colors.accent);
-        --hover-text-color: theme(colors.accent-foreground);
-    }
-
-    .destructive {
-        @apply bg-destructive text-destructive-foreground;
-        --bg-color: theme(colors.destructive);
-        --text-color: theme(colors.destructive-foreground);
-        --hover-bg-color: theme(colors.destructive / 0.9);
-        --hover-text-color: theme(colors.destructive-foreground);
-    }
-
-    .ghost {
-        --hover-bg-color: theme(colors.accent);
-        --hover-text-color: theme(colors.accent-foreground);
-    }
+  .ghost {
+    --hover-bg-color: theme(colors.accent);
+    --hover-text-color: theme(colors.accent-foreground);
+  }
 }

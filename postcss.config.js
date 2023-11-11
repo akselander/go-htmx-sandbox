@@ -1,5 +1,5 @@
-export default  {
+export default {
   plugins: {
-    tailwindcss: { output: './tailwindcss-config.js' },
+    tailwindcss: { output: "./tailwindcss-config.js" },
   },
-}
+};
