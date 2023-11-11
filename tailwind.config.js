@@ -3,6 +3,8 @@ export default {
   content: ["./pkg/**/*.html"],
   theme: {
     colors: {
+      transparent: "transparent",
+      current: "currentColor",
       background: "hsl(var(--color-background) / <alpha-value>)",
       foreground: "hsl(var(--color-foreground) / <alpha-value>)",
       muted: "hsl(var(--color-muted) / <alpha-value>)",
