@@ -99,7 +99,7 @@
 
   body {
     display: grid;
-    grid-template-rows: [header-start] 4rem [header-end content-start] auto [content-end footer-start] 4rem [footer-end];
+    grid-template-rows: [header-start] 3rem [header-end content-start] auto [content-end footer-start] 3rem [footer-end];
     @apply bg-background text-foreground;
   }
 

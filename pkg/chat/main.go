@@ -1,13 +1,16 @@
 package chat
 
 import (
+	"database/sql"
+
 	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
 
-func Routes(g *echo.Group) {
+func App(db *sql.DB, e *echo.Echo) {
+	g := e.Group("/chat")
 	g.GET("/", index)
 }
 

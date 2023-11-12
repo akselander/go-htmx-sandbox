@@ -1,0 +1,65 @@
+{{ block "auth-page" . }}
+<!DOCTYPE html>
+<html lang="en">
+
+{{ template "auth-head" . }}
+
+<body hx-boost="true">
+    {{ template "header" . }}
+    <main class="p-standard flex flex-col gap-standard" hx-target="this">
+        {{ template "auth-username" . }}
+    </main>
+    {{ template "footer" . }}
+</body>
+
+</html>
+{{ end }}
+
+{{ block "auth-username" . }}
+<h1 class="text-xl font-semibold">{{ if .Page | eq "signup" }}What should we
+    call you?{{ else
+    }}Enter your username.{{ end }}</h1>
+<form class="flex gap-standard items-end" hx-post="/auth/{{ .Page }}/password/">
+    <label class="w-full">Username<input name="username" type="text" value="{{ .User.Username }}" autofocus /></label>
+    <label class="w-full" hidden>Password<input name="password" type="password" value="{{ .User.Password }}" /></label>
+    <button class="button icon ghost" type="submit">{{ template "svg-arrow-right" }}</button>
+</form>
+{{ if .Page | eq "signup" }}
+<p>Already got an account? <a hx-post="/auth/login/" hx-include='[name="username"],[name="password"]'
+        hx-push-url="true">Login
+        instead.</a></p>
+{{ else }}
+<p>No account? <a hx-post="/auth/signup/" hx-include='[name="username"],[name="password"]' hx-push-url="true">Signup
+        instead.</a></p>
+{{ end }}
+{{ end }}
+
+{{ block "auth-password" . }}
+<h1 class="text-xl font-semibold">{{ if .Page | eq "signup" }}Set a password
+    if you want to!{{ else
+    }}Enter your password.{{ end }}</h1>
+<form class="flex gap-standard items-end" hx-post="/auth/{{ .Page }}/">
+    <label class="w-full" hidden>Username<input name="username" type="text" value="{{ .User.Username }}" /></label>
+    <label class="w-full">Password<input name="password" type="password" value="{{ .User.Password }}"
+            autofocus /></label>
+    <button class="button icon ghost" type="submit">{{ template "svg-arrow-right" }}</button>
+</form>
+{{ if .Page | eq "signup" }}
+<p>Already got an account? <a hx-post="/auth/login/password/" hx-include='[name="username"],[name="password"]'
+        hx-push-url="/auth/login/">Login
+        instead.</a></p>
+{{ else }}
+<p>No account? <a hx-post="/auth/signup/password/" hx-include='[name="username"],[name="password"]'
+        hx-push-url="/auth/signup/">Signup
+        instead.</a></p>
+{{ end }}
+{{ end }}
+
+{{ block "auth-head" . }}
+
+<head>
+    <title>{{ if .Page | eq "signup" }}Signup{{ else }}Login{{ end }}</title>
+    {{ template "meta" . }}
+    {{ template "imports" . }}
+</head>
+{{ end }}
