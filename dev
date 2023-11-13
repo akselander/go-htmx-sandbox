@@ -1,0 +1,3 @@
+!#/usr/bin/env bash
+
+air -- --port 2137 --session $GO_HTMX_SANDBOX_SESSION_SECRET_KEY --db $GO_HTMX_SANDBOX_DB_CONNECTION_URI

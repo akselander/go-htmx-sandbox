@@ -1,9 +1,17 @@
 {{ block "header" . }}
 <header id="header" class="border-primary border-b flex items-center">
-    <nav>
+    <nav class="flex justify-between w-full">
         <ul class="flex gap-x-1">
             <li><a class="button link" href="/">Home</a></li>
             <li><a class="button link" href="/chat">Chat</a></li>
+        </ul>
+        <ul class="flex gap-x-1" hx-target="main">
+            {{ if .User.Username | eq "" }}
+            <li><a class="button link" href="/auth/signup">Sign up</a></li>
+            <li><a class="button link" href="/auth/login">Login</a></li>
+            {{ else }}
+            <li><a class="button link" href="/auth/user">{{ .User.Username }}</a></li>
+            {{ end }}
         </ul>
     </nav>
 </header>
@@ -24,4 +32,68 @@
 {{ block "meta" . }}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{ end }}
+
+{{ block "error-page" . }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Error</title>
+    {{ template "meta" . }}
+    {{ template "imports" . }}
+</head>
+
+<body hx-boost="true">
+    {{ template "header" . }}
+    <main id="content" class="p-standard flex flex-col">
+        {{ template "error-card" . }}
+    </main>
+    {{ template "footer" . }}
+</body>
+
+</html>
+{{ end }}
+
+{{ block "error-card" . }}
+<div class="card">
+    <header class="header">
+        <h2 class="title text-2xl">Error</h2>
+    </header>
+    <div class="content flex flex-wrap gap-standard">
+        Something went wrong...
+    </div>
+</div>
+{{ end }}
+
+{{ block "not-found-page" . }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>404 - Not found</title>
+    {{ template "meta" . }}
+    {{ template "imports" . }}
+</head>
+
+<body hx-boost="true">
+    {{ template "header" . }}
+    <main id="content" class="p-standard flex flex-col">
+        {{ template "not-found-card" . }}
+    </main>
+    {{ template "footer" . }}
+</body>
+
+</html>
+{{ end }}
+
+{{ block "not-found-card" . }}
+<div class="card">
+    <header class="header">
+        <h2 class="title text-2xl">Not found</h2>
+    </header>
+    <div class="content flex flex-wrap gap-standard">
+        Where did this go?
+    </div>
+</div>
 {{ end }}
